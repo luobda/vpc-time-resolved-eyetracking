@@ -1,0 +1,89 @@
+Section 3.3: Quantitative representation system for VPC visual memory processing
+==========================================================================================
+
+1. QC summary
+                      Item       Value
+        Valid observations 3240.000000
+        Number of subjects  113.000000
+   Number of unique trials   30.000000
+Minimum trials per subject   20.000000
+ Median trials per subject   30.000000
+Maximum trials per subject   30.000000
+           Difficulty mean   -0.334265
+             Difficulty SD    0.097983
+        Difficulty minimum   -0.442700
+        Difficulty maximum    0.039360
+
+2. Feature definitions
+                           Feature                                                                            Computation     Direction harmonization                                                      Interpretation after harmonization
+        Memory representation mean                        Subject-level mean of memory representation across valid trials Original direction retained                Higher = stronger late novelty preference / better memory representation
+  Processing noise mean (reversed)                                        Negative subject-level mean of processing noise   Processing noise reversed                                Higher = lower processing noise after direction reversal
+ Retrieval latency mean (reversed)                                       Negative subject-level mean of retrieval latency  Retrieval latency reversed                             Higher = shorter retrieval latency after direction reversal
+       Memory representation slope      Subject-level slope of memory representation predicted by standardized difficulty Original direction retained        Higher = better maintenance of Memory representation under increasing difficulty
+ Processing noise slope (reversed)  Negative subject-level slope of processing noise predicted by standardized difficulty        Noise slope reversed     Higher = less Processing noise under increasing difficulty after direction reversal
+Retrieval latency slope (reversed) Negative subject-level slope of retrieval latency predicted by standardized difficulty      Latency slope reversed Higher = shorter Retrieval latency under increasing difficulty after direction reversal
+
+3. Six-feature descriptive statistics
+                            Feature  Mean       SD    Median        Q1       Q3       Min      Max  Skewness  Kurtosis
+      Memory Representation Ability   0.0 1.004454  0.282804 -0.265826 0.640657 -4.095906 1.083568 -1.995785  4.348301
+   Cognitive Processing Noise Level  -0.0 1.004454 -0.200194 -0.655185 0.402066 -1.793374 3.534056  1.120236  1.230299
+           Memory Retrieval Latency  -0.0 1.004454  0.138399 -0.566579 0.732497 -2.638795 2.547031 -0.494381  0.100941
+Memory Representation Ability slope   0.0 1.004454  0.136138 -0.545299 0.772335 -2.699353 2.406227 -0.431721 -0.202020
+   Cognitive Processing Noise slope   0.0 1.004454 -0.068841 -0.602068 0.538151 -1.954658 4.606463  1.080982  3.262419
+     Memory Retrieval Latency slope  -0.0 1.004454 -0.035340 -0.677017 0.705791 -2.254754 2.967652  0.110686 -0.125716
+
+4. Correlation matrix
+                                     Memory Representation Ability  Cognitive Processing Noise Level  Memory Retrieval Latency  Memory Representation Ability slope  Cognitive Processing Noise slope  Memory Retrieval Latency slope
+Memory Representation Ability                             1.000000                         -0.454940                  0.257246                             0.098458                         -0.012239                       -0.161018
+Cognitive Processing Noise Level                         -0.454940                          1.000000                 -0.087867                            -0.104383                         -0.021852                        0.109901
+Memory Retrieval Latency                                  0.257246                         -0.087867                  1.000000                             0.036703                         -0.016128                        0.065813
+Memory Representation Ability slope                       0.098458                         -0.104383                  0.036703                             1.000000                         -0.269978                        0.002166
+Cognitive Processing Noise slope                         -0.012239                         -0.021852                 -0.016128                            -0.269978                          1.000000                        0.028815
+Memory Retrieval Latency slope                           -0.161018                          0.109901                  0.065813                             0.002166                          0.028815                        1.000000
+
+5. High-correlation redundancy check
+No feature pair reached |r| >= 0.8.
+
+
+6. PCA adequacy checks
+KMO overall = 0.525588
+                            Feature      KMO
+      Memory Representation Ability 0.526749
+   Cognitive Processing Noise Level 0.545470
+           Memory Retrieval Latency 0.502281
+Memory Representation Ability slope 0.527720
+   Cognitive Processing Noise slope 0.485441
+     Memory Retrieval Latency slope 0.527191
+
+Bartlett: chi2(15) = 47.680602, p = 2.8629222e-05
+
+
+7. PCA variance explained
+Component  Eigenvalue  Explained variance ratio  Explained variance (%)  Cumulative variance ratio  Cumulative variance (%)
+      PC1    1.656842                  0.273697               27.369664                   0.273697                27.369664
+      PC2    1.252011                  0.206822               20.682188                   0.480519                48.051852
+      PC3    1.079996                  0.178406               17.840644                   0.658925                65.892497
+      PC4    0.857129                  0.141591               14.159063                   0.800516                80.051560
+      PC5    0.702082                  0.115978               11.597815                   0.916494                91.649374
+      PC6    0.505511                  0.083506                8.350626                   1.000000               100.000000
+
+8. PCA loading matrix
+                                          PC1       PC2       PC3       PC4       PC5       PC6
+Memory Representation Ability        0.829893  0.189659  0.030303 -0.013718 -0.100269  0.522566
+Cognitive Processing Noise Level    -0.746991 -0.195132  0.111203  0.429043  0.197076  0.421394
+Memory Retrieval Latency             0.427352  0.081645  0.684737  0.533934  0.148574 -0.208827
+Memory Representation Ability slope  0.337895 -0.722144  0.014364 -0.257586  0.553629  0.014208
+Cognitive Processing Noise slope    -0.156557  0.799323  0.063578 -0.245946  0.529411  0.026334
+Memory Retrieval Latency slope      -0.298011 -0.104353  0.770454 -0.510820 -0.210554  0.101780
+
+9. PCA interpretation summary
+Component  Explained variance (%)  Cumulative variance (%)                                                                       Major loadings                        Suggested interpretation
+      PC1               27.369664                27.369664       Memory Representation Ability (0.83); Cognitive Processing Noise Level (-0.75)                         Static processing style
+      PC2               20.682188                48.051852 Cognitive Processing Noise slope (0.80); Memory Representation Ability slope (-0.72)                 Difficulty-adaptation trade-off
+      PC3               17.840644                65.892497               Memory Retrieval Latency slope (0.77); Memory Retrieval Latency (0.68)                     Retrieval latency dimension
+      PC4               14.159063                80.051560              Memory Retrieval Latency (0.53); Memory Retrieval Latency slope (-0.51) Baseline–dynamic retrieval latency dissociation
+      PC5               11.597815                91.649374  Memory Representation Ability slope (0.55); Cognitive Processing Noise slope (0.53)                   Integrated dynamic adaptation
+      PC6                8.350626               100.000000                                                 Memory Representation Ability (0.52)                                                
+
+10. Interpretation caution
+If PC1 explains about 30% and PC1+PC2 explains about 50%, avoid writing that 'the first two PCs explain 30%'. That value is PC1 alone. Also avoid claiming that PCA 'proves' no redundancy. A more precise phrasing is: the gradual variance decay, low number of high-correlation pairs, and meaningful loading pattern support a multidimensional feature structure.

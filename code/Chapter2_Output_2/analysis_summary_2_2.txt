@@ -1,0 +1,133 @@
+难度调节效应的个体异质性
+================================================================================
+
+1. 数据质控
+                         item       value
+           valid_observations 3240.000000
+                   n_subjects  113.000000
+                     n_trials   30.000000
+       min_trials_per_subject   20.000000
+    median_trials_per_subject   30.000000
+       max_trials_per_subject   30.000000
+missing_values_in_key_columns    0.000000
+              difficulty_mean   -0.334265
+               difficulty_std    0.097983
+               difficulty_min   -0.442700
+               difficulty_max    0.039360
+
+2. 个体斜率描述性统计
+                    variable                            label   n      mean      std    median       q25      q75       min      max
+               rep_slope_raw         Raw representation slope 113 -0.032683 0.054645 -0.025277 -0.062349 0.009334 -0.179534 0.098221
+             noise_slope_raw       Raw processing noise slope 113  0.005001 0.014662  0.006006 -0.002855 0.013790 -0.062241 0.033534
+           latency_slope_raw      Raw retrieval latency slope 113  0.027449 0.180173  0.033788 -0.099152 0.148888 -0.504871 0.431893
+b_representation_maintenance Representation maintenance slope 113 -0.032683 0.054645 -0.025277 -0.062349 0.009334 -0.179534 0.098221
+      b_processing_stability       Processing stability slope 113 -0.005001 0.014662 -0.006006 -0.013790 0.002855 -0.033534 0.062241
+      b_retrieval_efficiency       Retrieval efficiency slope 113 -0.027449 0.180173 -0.033788 -0.148888 0.099152 -0.431893 0.504871
+
+3. 个体斜率正负响应比例
+                    variable                            label  n_valid  n_positive  pct_positive  n_negative  pct_negative  n_zero  pct_zero
+               rep_slope_raw         Raw representation slope      113          39     34.513274          74     65.486726       0       0.0
+             noise_slope_raw       Raw processing noise slope      113          80     70.796460          33     29.203540       0       0.0
+           latency_slope_raw      Raw retrieval latency slope      113          62     54.867257          51     45.132743       0       0.0
+b_representation_maintenance Representation maintenance slope      113          39     34.513274          74     65.486726       0       0.0
+      b_processing_stability       Processing stability slope      113          33     29.203540          80     70.796460       0       0.0
+      b_retrieval_efficiency       Retrieval efficiency slope      113          51     45.132743          62     54.867257       0       0.0
+
+4. 群体混合模型固定效应 vs 个体斜率均值
+              outcome  mixed_model_beta  mixed_model_SE  individual_slope_mean  individual_slope_SD  n_subjects  difference_mean_minus_mixed_beta
+Memory representation         -0.032918        0.003953              -0.032683             0.054645         113                          0.000236
+     Processing noise          0.005207        0.001526               0.005001             0.014662         113                         -0.000206
+    Retrieval latency          0.027470        0.019318               0.027449             0.180173         113                         -0.000021
+
+4.1 论文 3.2 个体异质性专用统计表
+       outcome_id               outcome  raw_slope_column        adaptive_slope_column  mixed_model_beta  mixed_model_SE  individual_slope_mean  individual_slope_sd  cv_abs_mean  difference_individual_mean_minus_mixed_beta  same_direction_as_mixed_beta  n_valid  n_positive  pct_positive  n_negative  pct_negative  n_zero  pct_zero  adaptive_mixed_model_beta  adaptive_slope_mean  adaptive_slope_sd  adaptive_n_positive  adaptive_pct_positive  adaptive_n_negative  adaptive_pct_negative
+   representation Memory representation     rep_slope_raw b_representation_maintenance         -0.032918        0.003953              -0.032683             0.054645     1.671962                                     0.000236                          True      113          39     34.513274          74     65.486726       0       0.0                  -0.032918            -0.032683           0.054645                   39              34.513274                   74              65.486726
+ processing_noise      Processing noise   noise_slope_raw       b_processing_stability          0.005207        0.001526               0.005001             0.014662     2.931865                                    -0.000206                          True      113          80     70.796460          33     29.203540       0       0.0                  -0.005207            -0.005001           0.014662                   33              29.203540                   80              70.796460
+retrieval_latency     Retrieval latency latency_slope_raw       b_retrieval_efficiency          0.027470        0.019318               0.027449             0.180173     6.563919                                    -0.000021                          True      113          62     54.867257          51     45.132743       0       0.0                  -0.027470            -0.027449           0.180173                   51              45.132743                   62              54.867257
+
+5. 三个动态难度响应斜率之间的相关
+                        var1                   var2   method   n         r        p
+b_representation_maintenance b_processing_stability  pearson 113 -0.269978 0.003829
+b_representation_maintenance b_retrieval_efficiency  pearson 113  0.002166 0.981837
+      b_processing_stability b_retrieval_efficiency  pearson 113  0.028815 0.761916
+b_representation_maintenance b_processing_stability spearman 113 -0.280358 0.002633
+b_representation_maintenance b_retrieval_efficiency spearman 113  0.023796 0.802453
+      b_processing_stability b_retrieval_efficiency spearman 113  0.001273 0.989327
+
+6. 静态基础能力与动态难度响应斜率之间的相关
+              static_feature                dynamic_slope  method   n         r        p
+z_mean_memory_representation b_representation_maintenance pearson 113  0.098458 0.299499
+z_mean_memory_representation       b_processing_stability pearson 113 -0.012239 0.897623
+z_mean_memory_representation       b_retrieval_efficiency pearson 113 -0.161018 0.088428
+ z_mean_processing_stability b_representation_maintenance pearson 113 -0.104383 0.271210
+ z_mean_processing_stability       b_processing_stability pearson 113 -0.021852 0.818294
+ z_mean_processing_stability       b_retrieval_efficiency pearson 113  0.109901 0.246542
+ z_mean_retrieval_efficiency b_representation_maintenance pearson 113  0.036703 0.699533
+ z_mean_retrieval_efficiency       b_processing_stability pearson 113 -0.016128 0.865366
+ z_mean_retrieval_efficiency       b_retrieval_efficiency pearson 113  0.065813 0.488577
+
+7. 6维静态-动态特征相关矩阵
+                                z_mean_memory_representation  z_mean_processing_stability  z_mean_retrieval_efficiency  z_b_representation_maintenance  z_b_processing_stability  z_b_retrieval_efficiency
+z_mean_memory_representation                        1.000000                    -0.454940                     0.257246                        0.098458                 -0.012239                 -0.161018
+z_mean_processing_stability                        -0.454940                     1.000000                    -0.087867                       -0.104383                 -0.021852                  0.109901
+z_mean_retrieval_efficiency                         0.257246                    -0.087867                     1.000000                        0.036703                 -0.016128                  0.065813
+z_b_representation_maintenance                      0.098458                    -0.104383                     0.036703                        1.000000                 -0.269978                  0.002166
+z_b_processing_stability                           -0.012239                    -0.021852                    -0.016128                       -0.269978                  1.000000                  0.028815
+z_b_retrieval_efficiency                           -0.161018                     0.109901                     0.065813                        0.002166                  0.028815                  1.000000
+
+8. 群体混合效应模型摘要
+
+===== Mixed model: Memory representation =====
+               Mixed Linear Model Regression Results
+===================================================================
+Model:            MixedLM Dependent Variable: memory_representation
+No. Observations: 3240    Method:             ML                   
+No. Groups:       113     Scale:              0.0505               
+Min. group size:  20      Log-Likelihood:     122.8762             
+Max. group size:  30      Converged:          Yes                  
+Mean group size:  28.7                                             
+---------------------------------------------------------------------
+                 Coef.    Std.Err.     z      P>|z|   [0.025   0.975]
+---------------------------------------------------------------------
+Intercept         0.630      0.011   56.657   0.000    0.608    0.651
+difficulty_z     -0.033      0.004   -8.328   0.000   -0.041   -0.025
+Group Var         0.012      0.008                                   
+===================================================================
+
+
+===== Mixed model: Processing noise =====
+            Mixed Linear Model Regression Results
+==============================================================
+Model:            MixedLM Dependent Variable: processing_noise
+No. Observations: 3240    Method:             ML              
+No. Groups:       113     Scale:              0.0075          
+Min. group size:  20      Log-Likelihood:     3247.6352       
+Max. group size:  30      Converged:          Yes             
+Mean group size:  28.7                                        
+---------------------------------------------------------------
+                 Coef.  Std.Err.    z     P>|z|  [0.025  0.975]
+---------------------------------------------------------------
+Intercept        0.254     0.003  85.022  0.000   0.248   0.260
+difficulty_z     0.005     0.002   3.413  0.001   0.002   0.008
+Group Var        0.001     0.002                               
+==============================================================
+
+
+===== Mixed model: Retrieval latency =====
+             Mixed Linear Model Regression Results
+===============================================================
+Model:            MixedLM Dependent Variable: retrieval_latency
+No. Observations: 3240    Method:             ML               
+No. Groups:       113     Scale:              1.2078           
+Min. group size:  20      Log-Likelihood:     -4939.5112       
+Max. group size:  30      Converged:          Yes              
+Mean group size:  28.7                                         
+----------------------------------------------------------------
+                  Coef.  Std.Err.    z     P>|z|  [0.025  0.975]
+----------------------------------------------------------------
+Intercept         1.785     0.027  66.891  0.000   1.733   1.837
+difficulty_z      0.027     0.019   1.422  0.155  -0.010   0.065
+Group Var         0.038     0.010                               
+===============================================================
+
+

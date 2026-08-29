@@ -1,0 +1,47 @@
+Section 3.4 clustering and interpretability analysis
+========================================================================
+
+Total participants: 113
+Low-representation threshold: Mean representation < -1.0
+Low-representation group: n = 12 (10.62%)
+High-representation group: n = 101 (89.38%)
+
+Cluster-number diagnostics:
+ K        SSE  SSE decrease from previous K (%)  Calinski-Harabasz  Silhouette  Davies-Bouldin                Cluster sizes
+ 2 361.691895                               NaN          23.657034    0.225181        1.863361                       68; 33
+ 3 307.391193                         15.012972          22.433298    0.204447        1.596019                   22; 55; 24
+ 4 271.510160                         11.672759          21.032149    0.195212        1.536942               22; 22; 42; 15
+ 5 242.371662                         10.732010          20.373680    0.182503        1.443516           19; 14; 36; 19; 13
+ 6 218.254317                          9.950563          20.010975    0.202849        1.326896        16; 38; 13; 18; 4; 12
+ 7 196.005948                         10.193782          20.151503    0.217669        1.264182    40; 13; 5; 13; 10; 10; 10
+ 8 181.044659                          7.633079          19.599088    0.187797        1.350682 5; 13; 11; 7; 11; 24; 20; 10
+
+Subject-level membership probabilities:
+Saved to Table_S4_subject_group_membership_probabilities.csv
+
+Final subtype counts:
+   Subtype  N   Percent
+    低表征能力组 12 10.619469
+ 高表征—记忆维持型 55 48.672566
+中等表征—提取补偿型 22 19.469027
+中等表征—慢速提取型 24 21.238938
+
+Final subtype standardized centers:
+subtype_cn  Memory Representation Ability  Cognitive Processing Noise Level  Memory Retrieval Latency  Memory Representation Ability slope  Cognitive Processing Noise slope  Memory Retrieval Latency slope
+    低表征能力组                      -2.413968                          1.396998                 -0.261153                            -0.017427                          0.046588                        0.647939
+ 高表征—记忆维持型                       0.509484                         -0.248690                  0.558592                             0.401500                         -0.285022                       -0.249538
+中等表征—提取补偿型                       0.105991                         -0.342318                 -0.054848                            -0.439258                          0.369957                        1.248483
+中等表征—慢速提取型                      -0.057743                          0.185208                 -1.099253                            -0.508738                          0.290755                       -0.896554
+
+ANOVA/Kruskal results:
+                            Feature          F  df_between  df_within      p_ANOVA  eta_squared  Kruskal_H    p_Kruskal  p_ANOVA_FDR  p_Kruskal_FDR
+      Memory Representation Ability 107.880285           3        109 1.708823e-32     0.748059  52.286812 2.601830e-11 1.025294e-31   7.805490e-11
+   Cognitive Processing Noise Level  13.265234           3        109 1.910573e-07     0.267452  20.332734 1.448137e-04 2.865859e-07   1.993065e-04
+           Memory Retrieval Latency  25.917606           3        109 9.872278e-13     0.416341  46.027225 5.596392e-10 1.974456e-12   1.119278e-09
+Memory Representation Ability slope   7.496050           3        109 1.313545e-04     0.171028  20.045599 1.660887e-04 1.576254e-04   1.993065e-04
+   Cognitive Processing Noise slope   3.348029           3        109 2.177310e-02     0.084373   9.018991 2.903946e-02 2.177310e-02   2.903946e-02
+     Memory Retrieval Latency slope  44.242146           3        109 8.814478e-19     0.549077  61.760338 2.472160e-13 2.644343e-18   1.483296e-12
+
+Bootstrap stability:
+ Bootstrap iterations  ARI mean   ARI SD  ARI median   ARI Q1   ARI Q3  ARI min  ARI max  Percent ARI >= 0.70  Percent ARI >= 0.50  Percent ARI < 0.10
+                  200   0.44292 0.174739    0.432992 0.321566 0.558944  0.08228 0.874275                 10.0                 32.5                 0.5

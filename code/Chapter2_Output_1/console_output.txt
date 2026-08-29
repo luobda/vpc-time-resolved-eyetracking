@@ -1,0 +1,74 @@
+
+原始列名：
+['被试', '试次', '记忆表征能力', '认知加工噪声水平', '记忆提取速率', '平均整体偏好', 'difficulty']
+
+===== 数据质控 =====
+                         item  value
+           valid_observations 3240.0
+                   n_subjects  113.0
+                     n_trials   30.0
+       min_trials_per_subject   20.0
+    median_trials_per_subject   30.0
+       max_trials_per_subject   30.0
+missing_values_in_key_columns    0.0
+
+===== 描述性统计 =====
+                        count    mean     std     min     25%     50%     75%     max      cv
+difficulty             3240.0 -0.3343  0.0980 -0.4427 -0.3966 -0.3482 -0.3277  0.0394 -0.2931
+memory_representation  3240.0  0.6298  0.2530  0.0000  0.6714  0.7568  0.7621  0.9047  0.4016
+processing_noise       3240.0  0.2536  0.0912  0.0000  0.2106  0.2798  0.3179  0.3761  0.3595
+retrieval_latency      3240.0  1.7859  1.1165  0.0052  1.0029  1.5519  2.5000  4.9943  0.6252
+
+开始拟合三个主模型...
+
+===== 2.1 主模型：difficulty 每增加 1 个标准差的固定效应 =====
+              outcome         term    beta     SE       z      p  CI_lower  CI_upper        AIC        BIC     logLik  n_obs  n_subjects
+Memory representation difficulty_z -0.0329 0.0040 -8.3280 0.0000   -0.0407   -0.0252  -237.7525  -213.4192   122.8762   3240         113
+     Processing noise difficulty_z  0.0052 0.0015  3.4132 0.0006    0.0022    0.0082 -6487.2703 -6462.9370  3247.6352   3240         113
+    Retrieval latency difficulty_z  0.0275 0.0193  1.4220 0.1550   -0.0104    0.0653  9887.0223  9911.3556 -4939.5112   3240         113
+
+开始拟合综合标准化模型...
+
+===== 指标类型差异：difficulty × metric_type 交互检验 =====
+                                                                   comparison  LR_chi2  df      p   AIC_full  AIC_reduced   BIC_full  BIC_reduced
+full model with difficulty × metric_type vs reduced model without interaction  19.5869   2 0.0001 27431.8746   27447.4615 27489.3301   27490.5532
+
+===== 标准化后各指标的难度斜率，方向统一为越高越好 =====
+                 metric  slope_per_1SD_difficulty     SE       z      p  CI_lower  CI_upper          metric_label
+memory_representation_z                   -0.1303 0.0173 -7.5242 0.0000   -0.1642   -0.0963 Memory representation
+ processing_stability_z                   -0.0576 0.0173 -3.3263 0.0009   -0.0915   -0.0237  Processing stability
+ retrieval_efficiency_z                   -0.0243 0.0173 -1.4030 0.1606   -0.0582    0.0096  Retrieval efficiency
+
+开始二次项稳健性检验...
+
+===== 二次项稳健性检验 =====
+              outcome  LR_chi2_for_quadratic_term  df  p_LRT  quadratic_beta  quadratic_SE  quadratic_z  quadratic_p  quadratic_CI_lower  quadratic_CI_upper  AIC_linear  AIC_quadratic  BIC_linear  BIC_quadratic
+Memory representation                      3.2968   1 0.0694         -0.0047        0.0026      -1.8162       0.0693             -0.0098              0.0004   -237.7525      -239.0493   -213.4192      -208.6327
+     Processing noise                      9.0516   1 0.0026          0.0030        0.0010       3.0108       0.0026              0.0010              0.0050  -6487.2703     -6494.3219  -6462.9370     -6463.9053
+    Retrieval latency                      0.0656   1 0.7978          0.0032        0.0126       0.2562       0.7978             -0.0215              0.0280   9887.0223      9888.9567   9911.3556      9919.3733
+
+======================================================================
+分析完成
+======================================================================
+
+结果文件夹：Chapter2_Output_1
+压缩包：Chapter2_Output_1.zip
+
+已生成以下核心文件：
+1. QC_summary.csv
+2. descriptive_statistics.csv
+3. main_mixed_effect_models.csv
+4. metric_type_interaction_test.csv
+5. standardized_metric_slopes.csv
+6. quadratic_robustness_tests.csv
+7. model_summaries.txt
+8. console_output.txt
+
+核心结果简述：
+- Memory representation: difficulty_z 的效应为 负向，beta = -0.0329, SE = 0.0040, z = -8.33, p = 8.224e-17，显著。
+- Processing noise: difficulty_z 的效应为 正向，beta = 0.0052, SE = 0.0015, z = 3.41, p = 0.000642，显著。
+- Retrieval latency: difficulty_z 的效应为 正向，beta = 0.0275, SE = 0.0193, z = 1.42, p = 0.155，不显著。
+
+综合模型 difficulty × metric_type 交互：χ²(2) = 19.59, p = 5.582e-05。
+
+全部分析已完成。

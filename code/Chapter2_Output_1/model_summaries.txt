@@ -1,0 +1,96 @@
+===== Model 1: Memory representation =====
+               Mixed Linear Model Regression Results
+===================================================================
+Model:            MixedLM Dependent Variable: memory_representation
+No. Observations: 3240    Method:             ML                   
+No. Groups:       113     Scale:              0.0505               
+Min. group size:  20      Log-Likelihood:     122.8762             
+Max. group size:  30      Converged:          Yes                  
+Mean group size:  28.7                                             
+---------------------------------------------------------------------
+                 Coef.    Std.Err.     z      P>|z|   [0.025   0.975]
+---------------------------------------------------------------------
+Intercept         0.630      0.011   56.657   0.000    0.608    0.651
+difficulty_z     -0.033      0.004   -8.328   0.000   -0.041   -0.025
+Group Var         0.012      0.008                                   
+===================================================================
+
+
+===== Model 2: Processing noise =====
+            Mixed Linear Model Regression Results
+==============================================================
+Model:            MixedLM Dependent Variable: processing_noise
+No. Observations: 3240    Method:             ML              
+No. Groups:       113     Scale:              0.0075          
+Min. group size:  20      Log-Likelihood:     3247.6352       
+Max. group size:  30      Converged:          Yes             
+Mean group size:  28.7                                        
+---------------------------------------------------------------
+                 Coef.  Std.Err.    z     P>|z|  [0.025  0.975]
+---------------------------------------------------------------
+Intercept        0.254     0.003  85.022  0.000   0.248   0.260
+difficulty_z     0.005     0.002   3.413  0.001   0.002   0.008
+Group Var        0.001     0.002                               
+==============================================================
+
+
+===== Model 3: Retrieval latency =====
+             Mixed Linear Model Regression Results
+===============================================================
+Model:            MixedLM Dependent Variable: retrieval_latency
+No. Observations: 3240    Method:             ML               
+No. Groups:       113     Scale:              1.2078           
+Min. group size:  20      Log-Likelihood:     -4939.5112       
+Max. group size:  30      Converged:          Yes              
+Mean group size:  28.7                                         
+----------------------------------------------------------------
+                  Coef.  Std.Err.    z     P>|z|  [0.025  0.975]
+----------------------------------------------------------------
+Intercept         1.785     0.027  66.891  0.000   1.733   1.837
+difficulty_z      0.027     0.019   1.422  0.155  -0.010   0.065
+Group Var         0.038     0.010                               
+===============================================================
+
+
+===== Full standardized model =====
+                             Mixed Linear Model Regression Results
+================================================================================================
+Model:                         MixedLM             Dependent Variable:             performance_z
+No. Observations:              9720                Method:                         ML           
+No. Groups:                    113                 Scale:                          0.9704       
+Min. group size:               60                  Log-Likelihood:                 -13707.9373  
+Max. group size:               90                  Converged:                      Yes          
+Mean group size:               86.0                                                             
+------------------------------------------------------------------------------------------------
+                                                      Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+------------------------------------------------------------------------------------------------
+Intercept                                             -0.000    0.022 -0.007 0.994 -0.044  0.044
+C(metric_type)[T.processing_stability_z]               0.000    0.024  0.000 1.000 -0.048  0.048
+C(metric_type)[T.retrieval_efficiency_z]              -0.000    0.024 -0.000 1.000 -0.048  0.048
+difficulty_z                                          -0.130    0.017 -7.524 0.000 -0.164 -0.096
+difficulty_z:C(metric_type)[T.processing_stability_z]  0.073    0.024  2.969 0.003  0.025  0.121
+difficulty_z:C(metric_type)[T.retrieval_efficiency_z]  0.106    0.024  4.329 0.000  0.058  0.154
+Group Var                                              0.022    0.005                           
+================================================================================================
+
+
+===== Reduced standardized model =====
+                       Mixed Linear Model Regression Results
+===================================================================================
+Model:                    MixedLM         Dependent Variable:         performance_z
+No. Observations:         9720            Method:                     ML           
+No. Groups:               113             Scale:                      0.9724       
+Min. group size:          60              Log-Likelihood:             -13717.7308  
+Max. group size:          90              Converged:                  Yes          
+Mean group size:          86.0                                                     
+-----------------------------------------------------------------------------------
+                                         Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+-----------------------------------------------------------------------------------
+Intercept                                -0.000    0.022 -0.007 0.994 -0.044  0.044
+C(metric_type)[T.processing_stability_z] -0.000    0.025 -0.000 1.000 -0.048  0.048
+C(metric_type)[T.retrieval_efficiency_z] -0.000    0.025 -0.000 1.000 -0.048  0.048
+difficulty_z                             -0.071    0.010 -7.064 0.000 -0.090 -0.051
+Group Var                                 0.022    0.005                           
+===================================================================================
+
+
