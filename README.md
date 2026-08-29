@@ -224,11 +224,6 @@ python 05d_questionnaire_eye_feature_correlations.py
 
 # 数据说明（Data Description）
 
-=======
-# README
-
-# 数据说明（Data Description）
-
 
 ## 1. 数据目录结构
 
